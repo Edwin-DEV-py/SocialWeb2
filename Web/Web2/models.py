@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 
 
 lista1=[
@@ -19,13 +18,12 @@ lista2=[
     ('9','9'),
     ('10','10'),
 ]
-class User(AbstractUser):
+class Usuario(models.Model):
     id_usuario= models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(unique=True,max_length=100)
-    date = models.DateTimeField(verbose_name="Fecha")
-    password = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=50)
+    correo = models.EmailField(unique=True,max_length=100)
+    fecha = models.DateTimeField(verbose_name="Fecha")
     password = models.CharField(max_length=100)
     tipo_usuario=models.CharField(max_length=13,choices=lista1)
     universidad = models.CharField(max_length=80,null=True)

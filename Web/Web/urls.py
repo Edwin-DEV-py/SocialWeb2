@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Web2.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('registro.html',registro,name="registro")
 ]
