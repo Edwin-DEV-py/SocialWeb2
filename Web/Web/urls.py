@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Web2.views import *
+from Web2.views import registro,index,login
 
 urlpatterns = [
+    path('', index,name="index"),
     path('admin/', admin.site.urls),
-    path('registro.html',registro,name="registro")
+    path('registro/',registro,name="registro"),
+    path('index/', index,name="index"),
+    path('login/', login,name="login"),
 ]
