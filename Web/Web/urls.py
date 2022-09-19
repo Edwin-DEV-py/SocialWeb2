@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Web2.views import registro,index,login
+from Web2.views import registro,index,login,feed
 
 urlpatterns = [
     path('', index,name="index"),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('registro/',registro,name="registro"),
     path('index/', index,name="index"),
     path('login/', login,name="login"),
+    path('feed/', feed,name="feed"),
 ]
