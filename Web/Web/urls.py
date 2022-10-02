@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Web2.views import registro,index,login,feed,coordinador,form_propuestas,grupo
+from Web2.views import perfil,registro,index,login,feed,coordinador,form_propuestas,grupo
 
 urlpatterns = [
-    path('perfil/', grupo,name="perfil"),
+    path('perfil/', perfil,name="perfil"),
     path('', index,name="index"),
     path('admin/', admin.site.urls),
     path('registro/',registro,name="registro"),
