@@ -18,6 +18,7 @@ from django.urls import path
 from Web2.views import registro,index,login,feed,coordinador,form_propuestas,grupo
 
 urlpatterns = [
+    path('perfil/', grupo,name="perfil"),
     path('', index,name="index"),
     path('admin/', admin.site.urls),
     path('registro/',registro,name="registro"),
@@ -27,4 +28,5 @@ urlpatterns = [
     path('coordinador/', coordinador,name="coordinador"),
     path('form_propuestas/', form_propuestas,name="form_propuestas"),
     path('grupo/', grupo,name="grupo"),
+    
 ]

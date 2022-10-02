@@ -41,3 +41,6 @@ def form_propuestas(request):
 
 def grupo(request):
     return render(request,'grupo.html')
+
+def perfil(request):
+    return render(request,'perfil.html')
