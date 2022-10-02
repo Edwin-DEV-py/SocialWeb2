@@ -33,5 +33,5 @@ def registro(request):
     contexto = {'form':form}
     return render(request,'registro.html',contexto)
 
-
-    
+def coordinador(request):
+    return render(request,'coordinador.html')
