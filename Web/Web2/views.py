@@ -38,3 +38,6 @@ def coordinador(request):
 
 def form_propuestas(request):
     return render(request,'form_propuestas.html')
+
+def grupo(request):
+    return render(request,'grupo.html')
