@@ -1,6 +1,25 @@
 {% extends "index.html" %}
 {% block index %}
-
-
-
+<div class="container py-5 h-100">
+<div class="text-center">
+    <h1 class="display-4">Creacion de Grupo</h1>
+</div>
+<section style="background-color: #eee;">
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Seleccione integrates del grupo</label>
+            <select multiple class="form-control" id="exampleFormControlSelect2">
+                <option>Usuario1</option>
+                <option>Usuario2</option>
+                <option>Usuario3</option>
+                <option>Usuario4</option>
+                <option>Usuario5</option>
+            </select>
+        </div>
+    </form>
+    <div>
+    <button type="submit" class="btn btn-primary my-1">Crear grupo</button>
+    </div>
+</section>    
+</div>
 {% endblock %}
