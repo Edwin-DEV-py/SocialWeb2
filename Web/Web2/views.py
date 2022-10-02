@@ -35,3 +35,6 @@ def registro(request):
 
 def coordinador(request):
     return render(request,'coordinador.html')
+
+def form_propuestas(request):
+    return render(request,'form_propuestas.html')
