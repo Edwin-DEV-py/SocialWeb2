@@ -7,14 +7,18 @@
 <section style="background-color: #eee;">
     <form>
         <div class="form-group">
-            <label for="exampleFormControlSelect2">Seleccione integrates del grupo</label>
-            <select multiple class="form-control" id="exampleFormControlSelect2">
-                <option>Usuario1</option>
-                <option>Usuario2</option>
-                <option>Usuario3</option>
-                <option>Usuario4</option>
-                <option>Usuario5</option>
-            </select>
+            <label for="formGroupExampleInput">Ingrese miembros del grupo</label>
+            <div class="row">
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-danger mb-2">Eliminar usuario</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary mb-2">Confirmar usuario</button>
+                </div>
+            </div>
         </div>
     </form>
     <div>
