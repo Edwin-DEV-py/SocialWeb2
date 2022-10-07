@@ -18,6 +18,7 @@
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Login</h3>
             <form asp-action="Registro" asp-controller="Home" method="post">
                 {% csrf_token %}
+                {{ form.as_p }}
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
               </div>

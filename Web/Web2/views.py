@@ -14,7 +14,19 @@ def index(request):
     return render(request,'index.html')
 
 def login(request):
-    return render(request,'login.html')
+    form = formLogin(request.POST or None)
+    if form.is_valid():
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
+        user = authenticate(request,email=email,password=password)
+        if user is not None:
+            login(request,user)
+            messages.success(request,'Iniciaste sesion')
+            return redirect('index.html')
+        else:
+            messages.warning(request,'datos no validos')
+            return redirect('registro.html')
+    return render(request,'login.html',{'form':form})
 
 def feed(request):
     return render(request,'feed.html')
