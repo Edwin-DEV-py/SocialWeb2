@@ -20,7 +20,6 @@ from Web2.views import perfil,registro,index,login,feed,coordinador,form_propues
 urlpatterns = [
     path('perfil/', perfil,name="perfil"),
     path('', index,name="index"),
-    path('index.html',index,name="inicio"),
     path('admin/', admin.site.urls),
     path('registro/',registro,name="registro"),
     path('index/', index,name="index"),
