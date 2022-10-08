@@ -9,31 +9,33 @@ from django.contrib.auth.hashers import make_password
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request,'index.html')
 
-def login(request):
-    form = formLogin(request.POST or None)
-    if form.is_valid():
-        email = form.cleaned_data.get('email')
-        password = form.cleaned_data.get('password')
-        user = authenticate(request,email=email,password=password)
-        if user is not None:
-            login(request,user)
-            messages.success(request,'Iniciaste sesion')
-            return redirect('index.html')
-        else:
-            messages.warning(request,'datos no validos')
-            return redirect('registro.html')
-    return render(request,'login.html',{'form':form})
+def login_usuario(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request,data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            usuario = authenticate(username=username,password = password)
+            if usuario is not None:
+                login(request,usuario)
+                messages.success(request,f'bienvenido {username}')
+                return redirect('index.html')
+            else:
+                messages.error(request,"Los datos son incorrectos")
+    form = AuthenticationForm()
+    return render(request,'login.html',{"form":form})
 
 def feed(request):
     return render(request,'feed.html')
 
-def registro(request):
+def registro_usuario(request):
     if request.method == 'POST':
-        form = formRegistro(request.POST)
+        form = registro(request.POST)
         if form.is_valid():
             user = form.save()
             user.save()
@@ -41,7 +43,7 @@ def registro(request):
             messages.success(request,f'Usuario {username} creado')
             return redirect('index.html')
     else:
-        form = formRegistro()
+        form = registro()
     contexto = {'form':form}
     return render(request,'registro.html',contexto)
 
@@ -54,5 +56,25 @@ def form_propuestas(request):
 def grupo(request):
     return render(request,'grupo.html')
 
+@login_required
 def perfil(request):
-    return render(request,'perfil.html')
+    user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':
+        form = UniversitarioForm(request.POST, request.FILES)
+        if form.is_valid():
+            form2 = form.save(commit = False)
+            form2.user = user
+            form2.save()
+            return redirect('index.html')
+    else:
+        form = UniversitarioForm()
+    tipo = universitario.objects.filter(user_id = request.user.id)   
+    return render(request,'perfil.html',{'form':form,'tp':tipo})
+
+
+
+def salir(request):
+    logout(request)
+    return redirect("index")
+    
+

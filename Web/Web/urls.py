@@ -15,19 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Web2.views import perfil,registro,index,login,feed,coordinador,form_propuestas,grupo
+from Web2.views import *
 
 urlpatterns = [
     path('perfil/', perfil,name="perfil"),
     path('', index,name="index"),
     path('index.html',index,name="inicio"),
     path('admin/', admin.site.urls),
-    path('registro/',registro,name="registro"),
+    path('registro.html',registro_usuario,name="registro"),
     path('index/', index,name="index"),
-    path('login/', login,name="login"),
+    path('login.html', login_usuario,name="login"),
     path('feed/', feed,name="feed"),
     path('coordinador/', coordinador,name="coordinador"),
     path('form_propuestas/', form_propuestas,name="form_propuestas"),
     path('grupo/', grupo,name="grupo"),
+    path('cerrar.html',salir,name="cerrar"),
     
 ]
