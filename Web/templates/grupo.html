@@ -2,25 +2,17 @@
 {% block index %}
 <div class="container py-5 h-100">
 <div class="text-center">
-    <h1 class="display-4">Creacion de Grupo</h1>
+    <h1 class="display-4">Grupos</h1>
 </div>
-<section style="background-color: #eee;">
-    <form>
-        <div class="form-group">
-            <label for="formGroupExampleInput">Ingrese miembros del grupo</label>
-            <div class="row">
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-primary mb-2">Agregar usuario</button>
-                </div>
-            </div>
-        </div>
-    </form>
-    <div>
-    <button type="submit" class="btn btn-primary my-1">Crear grupo</button>
-    </div>
-</section>    
+<div>
+    <h2>Mis grupos</h2>
+    {% for c in gr %}
+    <h3>Titulo:{{ c.titulo }}</h3>
+    <h3>Descripcion:{{ c.Descripcion }}</h3>
+</div>
+<div>
+    <h2>Grupos:</h2>
+</div>
+{% endfor %}
 </div>
 {% endblock %}

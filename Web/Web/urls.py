@@ -28,7 +28,7 @@ urlpatterns = [
     path('feed/', feed,name="feed"),
     path('coordinador/', coordinador,name="coordinador"),
     path('form_propuestas/', form_propuestas,name="form_propuestas"),
-    path('grupo/', grupo,name="grupo"),
+    path('grupo/', Grupo,name="grupo"),
     path('cerrar.html',salir,name="cerrar"),
     
 ]

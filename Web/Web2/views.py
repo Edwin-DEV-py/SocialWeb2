@@ -53,8 +53,9 @@ def coordinador(request):
 def form_propuestas(request):
     return render(request,'form_propuestas.html')
 
-def grupo(request):
-    return render(request,'grupo.html')
+def Grupo(request):
+    grupos = grupo.objects.filter(user_id = request.user.id)
+    return render(request,'grupo.html',{'gr':grupos})
 
 @login_required
 def perfil(request):
@@ -68,8 +69,18 @@ def perfil(request):
             return redirect('index.html')
     else:
         form = UniversitarioForm()
-    tipo = universitario.objects.filter(user_id = request.user.id)   
-    return render(request,'perfil.html',{'form':form,'tp':tipo})
+        
+    user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':
+        form2 = grupoForm(request.POST, request.FILES)
+        if form2.is_valid():
+            form3 = form2.save(commit=False)
+            form3.user = user
+            form3.save()
+            return redirect('index.html')
+    else:
+        form2 = grupoForm()
+    return render(request,'perfil.html',{'form':form,'form2':form2})
 
 
 

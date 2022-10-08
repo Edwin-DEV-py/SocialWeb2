@@ -18,3 +18,10 @@ class UniversitarioForm(ModelForm):
         model = universitario
         fields = '__all__'
         exclude = ['user']
+        
+        
+class grupoForm(ModelForm):
+    class Meta:
+        model=grupo
+        fields = '__all__'
+        exclude = ['user']
