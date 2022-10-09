@@ -43,3 +43,7 @@ class grupo(models.Model):
     id = models.AutoField(primary_key = True)
     titulo = models.CharField(max_length = 50, null=False)
     Descripcion = models.CharField(max_length = 150)
+
+class propuesta(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
+    id = models.AutoField(primary_key = True)

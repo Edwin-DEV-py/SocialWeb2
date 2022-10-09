@@ -25,3 +25,9 @@ class grupoForm(ModelForm):
         model=grupo
         fields = '__all__'
         exclude = ['user']
+
+class propuestaForm(ModelForm):
+    class Meta:
+        model=propuesta
+        fields = '__all__'
+        exclude = ['user']
