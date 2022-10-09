@@ -12,7 +12,8 @@ from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
 def index(request):
-    return render(request,'index.html')
+    user = grupo.objects.filter(user_id=request.user.id)
+    return render(request,'index.html',{'mg':user})
 
 def login_usuario(request):
     if request.method == 'POST':
@@ -53,9 +54,6 @@ def coordinador(request):
 def form_propuestas(request):
     return render(request,'form_propuestas.html')
 
-def Grupo(request):
-    grupos = grupo.objects.filter(user_id = request.user.id)
-    return render(request,'grupo.html',{'gr':grupos})
 
 @login_required
 def perfil(request):
@@ -88,4 +86,15 @@ def salir(request):
     logout(request)
     return redirect("index")
     
+def ver_grupos(request):
+    grupos = grupo.objects.all()
+    user = request.user
+    contexto = {
+        'user':user,
+        'grupos':grupos
+    }
+    return render(request,'grupo.html',contexto)
 
+def migrupo(request):
+    user = grupo.objects.filter(user_id=request.user.id)
+    return render(request,'migrupo.html',{'mg':user})
