@@ -2,12 +2,11 @@
 {% block index %}
 <div class="container py-5 h-100">
 <div class="text-center">
-    <h1 class="display-4">Grupos</h1>
+    <h1 class="display-4">Grupo de {{ user.first_name }}</h1>
 </div>
 <div>
-    <h2>Mis grupos</h2>
-    {% for mg in mg%}
-    <h3>{{ mg.titulo }}</h3>
+    {% for p in my %}
+    <h3>{{ p.titulo }}</h3>
     {% endfor %}
 </div>
 {% endblock %}

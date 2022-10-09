@@ -29,7 +29,7 @@ urlpatterns = [
     path('coordinador/', coordinador,name="coordinador"),
     path('form_propuestas/', form_propuestas,name="form_propuestas"),
     path('grupo/', ver_grupos,name="ver_grupos"),
-    path('migrupo/', migrupo,name="migrupo"),
+    path('migrupo/<str:username>/', migrupo,name="migrupo"),
     path('cerrar.html',salir,name="cerrar"),
     
 ]

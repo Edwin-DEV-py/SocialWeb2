@@ -31,3 +31,7 @@ class propuestaForm(ModelForm):
         model=propuesta
         fields = '__all__'
         exclude = ['user']
+        
+    widgets ={
+            'myfield':forms.TextInput(attrs={'class':'form-control'})
+        }

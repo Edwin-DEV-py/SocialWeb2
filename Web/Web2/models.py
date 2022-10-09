@@ -39,11 +39,22 @@ class universitario(models.Model):
     
     
 class grupo(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='Usuario')
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='migrupo')
     id = models.AutoField(primary_key = True)
     titulo = models.CharField(max_length = 50, null=False)
     Descripcion = models.CharField(max_length = 150)
+    
+    def __str__(self):
+    	return f'Perfil de {self.user.username}'
+    
 
 class propuesta(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
     id = models.AutoField(primary_key = True)
+    titulo = models.CharField(max_length = 50, null=False)
+    Descripcion = models.CharField(max_length = 300)
+    link = models.CharField(max_length = 200)
+    diapostivas = models.FileField()
+    
+    def __str__(self):
+	    return (self.Descripcion,self.titulo,self.link,self.diapostivas)

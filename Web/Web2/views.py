@@ -52,9 +52,8 @@ def coordinador(request):
     return render(request,'coordinador.html')
 
 def form_propuestas(request):
-    if request.method == "POST":
-        form = propuestaForm()
-    return render(request,'form_propuestas.html')
+    form = propuestaForm()
+    return render(request,'form_propuestas.html',{'form':form})
 
 
 @login_required
@@ -90,13 +89,18 @@ def salir(request):
     
 def ver_grupos(request):
     grupos = grupo.objects.all()
-    user = request.user
     contexto = {
-        'user':user,
         'grupos':grupos
     }
     return render(request,'grupo.html',contexto)
 
-def migrupo(request):
-    user = grupo.objects.filter(user_id=request.user.id)
-    return render(request,'migrupo.html',{'mg':user})
+def migrupo(request, username):
+    user = User.objects.get(username=username)
+    my = user.migrupo.all()
+    propuesta = user.user.all()
+    contexto = {
+        'user':user,
+        'pro':propuesta,
+        'my':my
+    }
+    return render(request,'migrupo.html',contexto)

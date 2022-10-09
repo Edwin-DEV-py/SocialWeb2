@@ -13,7 +13,9 @@
     <tbody>
         {% for g in grupos %}
         <tr>
-            <td>{{ g.user.first_name }}</td>
+            <td><a href="{% url 'migrupo' g.user %}">{{ g.user.first_name }}</a></td>
+            <td>{{ g.titulo }}</td>
+            <td>{{ g.Descripcion }}</td>
         </tr>
         {% endfor %}
     </tbody>
