@@ -79,8 +79,11 @@ def perfil(request):
             return redirect('index.html')
     else:
         form2 = grupoForm()
-    return render(request,'perfil.html',{'form':form,'form2':form2})
+    uni = universitario.objects.filter(user_id = request.user.id)
+    return render(request,'perfil.html',{'form':form,'form2':form2,'uni':uni})
 
+#uni = universitario.objects.all()
+#user = request.user
 
 
 def salir(request):

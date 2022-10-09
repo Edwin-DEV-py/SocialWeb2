@@ -8,35 +8,23 @@
             <div class="form-group">
                 {% render_field form.titulo class="form-control" id="Propuesta_titulo" type="text" placeholder="Titulo" %}
             </div>
-
+            <br>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Descripcion Propuesta</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                {% render_field form.Descripcion class="form-control" id="Propuesta_titulo" rows="3" type="text" placeholder="Descripcion Propuesta" %}
+                <!--label for="exampleFormControlTextarea1">Descripcion Propuesta</label-->
             </div>
+            <br>
             <div class="form-group">
-                <label>Link Video Adjunto</label>
-                <input type="text" class="form-control" id="Video_Link">
+                {% render_field form.link class="form-control" id="Propuesta_titulo" type="text" placeholder="Video" %}
             </div>
+            <br>
             <div class="form-group">
-                <label>Ingrese los archivos necesarios</label>
+                <label>Ingrese las diapositivas</label>
             </div> 
             <div>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                {% render_field form.diapostivas type="file" class="form-control-file" id="exampleFormControlFile1" %}
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Ingrese miembros de la propuesta</label>
-                <div class="row">
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-danger mb-2">Eliminar usuario</button>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary mb-2">Confirmar usuario</button>
-                    </div>
-                </div>
-            </div>
+            <br>
             <button type="submit" class="btn btn-primary">Crear propuesta</button>
         </div>
     </form>

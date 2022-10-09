@@ -6,120 +6,88 @@
 </div>
 <section style="background-color: #eee;">
   <div class="container py-5">
+
     <div class="row">
-      <div class="col-lg-14">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{ user.first_name }}</h5>
+            {% for u in uni %}
+            <p class="text-muted mb-1">{{ u.tipo_usuario }}</p>
+            {% endfor %}
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Follow</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Nombre persona</p>
+                <p class="mb-0">Full Name</p>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control form-control-sm" id="Nombres" placeholder="Nombre">
+                <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
               </div>
             </div>
-
             <hr>
-
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Apellidos</p>
+                <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control form-control-sm" id="Apellidos" placeholder="Apellidos">
+                <p class="text-muted mb-0">{{ user.username }}</p>
               </div>
             </div>
-
             <hr>
-
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Universidad</p>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control form-control-sm" id="Universidad" placeholder="Universidad">
+                {% for u in uni %}
+                <p class="text-muted mb-0">{{ u.universidad }}</p>
+                {% endfor %}
               </div>
             </div>
-
             <hr>
-
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Facultad</p>
               </div>
               <div class="col-sm-9">
-                <select class="form-control form-control-sm" id="exampleFormControlSelect1">
-                  <option>Ing Sistemas</option>
-                  <option>Ing Industrial</option>
-                  <option>Ing Mecanica</option>
-                  <option>Ing Civil</option>
-                  <option>Ing de Sancochos</option>
-                </select>
+                {% for u in uni %}
+                <p class="text-muted mb-0">{{ u.facultad }}</p>
+                {% endfor %}
               </div>
             </div>
-
             <hr>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Correo</p>
-              </div>
-              <div class="col-sm-9">
-                <input type="email" class="form-control form-control-sm" id="Correo" placeholder="Email">
-              </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Contraseña</p>
-              </div>
-              <div class="col-sm-9">
-                <input type="password" class="form-control form-control-sm" id="password" placeholder="Contraseña">
-              </div>
-            </div>
-
-            <hr>
-
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Semestre</p>
               </div>
               <div class="col-sm-9">
-                <input type="number" class="form-control form-control-sm" id="Semestre" placeholder="Semestre">
-              </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Promedio Ponderado</p>
-              </div>
-              <div class="col-sm-9">
-                <input type="number" class="form-control form-control-sm" id="Promedio" placeholder="Promedio">
-              </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">ID</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Identificacion</p>
+                {% for u in uni %}
+                <p class="text-muted mb-0">{{ u.semestre }}</p>
+                {% endfor %}
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
          <button type="submit" class="btn btn-primary my-1">Guardar Cambios</button>
-         <button type="submit" class="btn btn-primary pull-right my-1">Solicitar líder</button>
-         
-         
+         <button type="submit" class="btn btn-primary pull-right my-1">Solicitar líder</button>      
 </section>
 </div>
+<!-- zona para info de universidad y form de grupo -->
 <div>
   <h2>Eres estudiante?</h2>
   <!-- Button trigger modal -->
