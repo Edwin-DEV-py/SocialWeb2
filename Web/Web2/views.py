@@ -13,9 +13,8 @@ from django.contrib.auth.decorators import login_required
 from Web2.models import universitario
 
 def index(request):
-    datos = universitario.objects.all()
     user = grupo.objects.filter(user_id=request.user.id)
-    return render(request,'index.html',{'mg':user},"coordinador.html", {"datos": datos})
+    return render(request,'index.html',{'mg':user})
 
 def login_usuario(request):
     if request.method == 'POST':
@@ -51,7 +50,8 @@ def registro_usuario(request):
     return render(request,'registro.html',contexto)
 
 def coordinador(request):
-    return render(request,'coordinador.html')
+    datos = universitario.objects.all()
+    return render(request,'coordinador.html',{"datos": datos})
 
 def form_propuestas(request):
     form = propuestaForm()
