@@ -52,7 +52,7 @@ def registro_usuario(request):
 def coordinador(request):
     datos = universitario.objects.all()
     return render(request,'coordinador.html',{"datos": datos})
-
+ 
 def form_propuestas(request):
     form = propuestaForm()
     return render(request,'form_propuestas.html',{'form':form})
@@ -109,3 +109,22 @@ def migrupo(request, username):
         'my':my
     }
     return render(request,'migrupo.html',contexto)
+
+def editar_perfil(request, id):
+    
+    perfil= get_object_or_404(universitario, id=id)
+    
+    data= {
+        'form': UniversitarioForm(instance=perfil)
+    }
+    if request.method == 'POST':
+        formulario= UniversitarioForm(data=request.POST, instance=perfil, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="coordinador.html")
+        data["form"]= formulario
+    
+    
+    return render(request, 'editar_perfil.html', data)
+
+
