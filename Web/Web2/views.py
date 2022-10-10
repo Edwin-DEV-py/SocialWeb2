@@ -10,10 +10,12 @@ from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
+from Web2.models import universitario
 
 def index(request):
+    datos = universitario.objects.all()
     user = grupo.objects.filter(user_id=request.user.id)
-    return render(request,'index.html',{'mg':user})
+    return render(request,'index.html',{'mg':user},"coordinador.html", {"datos": datos})
 
 def login_usuario(request):
     if request.method == 'POST':
