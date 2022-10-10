@@ -118,7 +118,7 @@ def editar_perfil(request, id):
         'form': UniversitarioForm(instance=perfil)
     }
     if request.method == 'POST':
-        formulario= UniversitarioForm(data=request.POST, instance=perfil, files=request.FILES)
+        formulario= UniversitarioForm(data=request.POST, instance=perfil)   
         if formulario.is_valid():
             formulario.save()
             return redirect(to="coordinador.html")
