@@ -51,7 +51,12 @@ def registro_usuario(request):
 
 def coordinador(request):
     datos = universitario.objects.all()
-    return render(request,'coordinador.html',{"datos": datos})
+    user = request.user
+    contexto = {
+        'user': user,
+        'uni':datos
+    }
+    return render(request,'coordinador.html',contexto)
  
 def form_propuestas(request):
     form = propuestaForm()
@@ -110,22 +115,18 @@ def migrupo(request, username):
     }
     return render(request,'migrupo.html',contexto)
 
-def editar_perfil(request):
+def editar_perfil(request,id):
     
-    perfil= get_object_or_404(User, pk=request.user.pk)
-    
-    data= {
-        'form': UserCreationForm(instance=perfil)
-    }
-    if request.method == 'POST':
-        formulario= UserCreationForm(data=request.POST, instance=perfil)   
-        if formulario.is_valid():
-            formulario.save()
-            return redirect(to="coordinador.html")
-        data["form"]= formulario
-    
-    
-    return render(request, 'editar_perfil.html', data)
+    perfil= universitario.objects.get(id=id)
+    if request.method == 'GET':
+        form = UniversitarioForm(instance=perfil)
+        contesto = {'form':form,'perfil':perfil}
+    else:
+        form = UniversitarioForm(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'editaruni.html', contesto)
 
 def eliminar_usuario(request,id):
     usuario = User.objects.get(id = id)
@@ -133,3 +134,15 @@ def eliminar_usuario(request,id):
     return redirect('index') 
 
 
+def editaruni(request):
+    user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':
+        form = UniversitarioForm(request.POST, request.FILES)
+        if form.is_valid():
+            form2 = form.save(commit = False)
+            form2.user = user
+            form2.save()
+            return redirect('index.html')
+    else:
+        form = UniversitarioForm()
+    return render(request, 'editaruni.html', {'form':form})

@@ -23,6 +23,7 @@ urlpatterns = [
     path('index.html',index,name="inicio"),
     path('admin/', admin.site.urls),
     path('registro.html',registro_usuario,name="registro"),
+    path('editaruni/<int:id>/',editar_perfil,name="editar"),
     path('index/', index,name="index"),
     path('login.html', login_usuario,name="login"),
     path('feed/', feed,name="feed"),
@@ -31,7 +32,6 @@ urlpatterns = [
     path('grupo/', ver_grupos,name="ver_grupos"),
     path('migrupo/<str:username>/', migrupo,name="migrupo"),
     path('cerrar.html',salir,name="cerrar"),
-    path('editar_perfil.html',editar_perfil,name="editar_perfil"),
     path('eliminar_usuario',eliminar_usuario,name="eliminar_usuario"),
-    
+    path('editaruni/',editaruni,name="uni"),
 ]

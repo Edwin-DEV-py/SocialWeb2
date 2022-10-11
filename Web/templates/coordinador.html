@@ -7,7 +7,6 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Universidad</th>
@@ -21,21 +20,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">
-        1  
-      </th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td><a href="{% url 'editar_perfil'%}"> <button type="submit" class="btn btn-primary my-1" >Editar</button></a> </td>
-      <td><a href="{% url 'eliminar_usuario'%}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
-      <td> <button type="submit" class="btn btn-primary my-1">Aceptar</button> </td>
-    </tr>
+      {% for u in uni %}
+      <tr>
+        <td>{{ u.user.first_name }}</td>
+        <td>{{ u.user.last_name }}</td>
+        <td>{{ u.universidad }}</td>
+        <td>{{ u.facultad }}</td>
+        <td>{{ u.user.username }}</td>
+        <td>{{ u.semestre }}</td>
+        <td>{{ u.promedio }}</td>
+        <td><a href="{% url 'editar' u.id %}">Editar</a> </td>
+        <td><a href="{% url 'eliminar_usuario' %}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
+        <td> <button type="submit" class="btn btn-primary my-1">Aceptar</button> </td>
+      </tr>
+      {% endfor %}
   </tbody>
 </table>
 </center>
