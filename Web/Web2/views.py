@@ -127,4 +127,9 @@ def editar_perfil(request):
     
     return render(request, 'editar_perfil.html', data)
 
+def eliminar_usuario(request,id):
+    usuario = User.objects.get(id = id)
+    User.delete()
+    return redirect('index') 
+
 

@@ -31,6 +31,7 @@ urlpatterns = [
     path('grupo/', ver_grupos,name="ver_grupos"),
     path('migrupo/<str:username>/', migrupo,name="migrupo"),
     path('cerrar.html',salir,name="cerrar"),
-    path('editar_perfil.html',editar_perfil,name="editar_perfil"),
+    path('editar_perfil.html/<int:id>/',editar_perfil,name="editar_perfil"),
+    path('eliminar_usuario/<int:id>/',eliminar_usuario,name="eliminar_usuario"),
     
 ]
