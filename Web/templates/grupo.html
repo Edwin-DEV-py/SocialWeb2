@@ -4,24 +4,20 @@
 <div class="text-center">
     <h1 class="display-4">Grupos</h1>
 </div>
-<div>
-    <h2>Mis grupos</h2>
-    <h3>{{ mg.titulo }}</h3>
-</div>
-<table>
-    <thead>
-    <th>Usuario</th>
-    <th>Grupo</th>
-    <th>Descripcion</th>
-    </thead>
-    <tbody>
-        {% for g in grupos %}
-        <tr>
-            <td><a href="{% url 'migrupo' g.user %}">{{ g.user.first_name }}</a></td>
-            <td>{{ g.titulo }}</td>
-            <td>{{ g.Descripcion }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% for g in grupos %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="https://www.upb.edu.co/es/imagenes/img-escudo-lau-1464095147975.jpg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'migrupo' g.user %}">{{ g.titulo }}</a></h5>
+          <p class="card-text">{{ g.Descripcion }}</p>
+          <p class="card-text"><small class="text-muted">{{ g.user.first_name }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 {% endblock %}

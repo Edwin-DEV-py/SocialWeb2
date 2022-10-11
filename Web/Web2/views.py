@@ -87,7 +87,9 @@ def perfil(request):
     else:
         form2 = grupoForm()
     uni = universitario.objects.filter(user_id = request.user.id)
-    return render(request,'perfil.html',{'form':form,'form2':form2,'uni':uni})
+    usuario = User.objects.filter()
+    ziplista = zip(uni,usuario)
+    return render(request,'perfil.html',{'form':form,'form2':form2,'zipl':ziplista,'un':uni})
 
 #uni = universitario.objects.all()
 #user = request.user

@@ -36,6 +36,7 @@ class universitario(models.Model):
     promedio = models.DecimalField(max_digits=4,decimal_places=2,null=True,blank=True)
     semestre = models.CharField(max_length=2,choices=lista2,null=True,blank=True)
     identificacion = models.CharField(max_length=10,null=True,blank=True)
+    lider = models.CharField(max_length=1,null = True, default="0")
     
     
 class grupo(models.Model):

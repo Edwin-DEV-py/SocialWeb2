@@ -17,7 +17,7 @@ class UniversitarioForm(ModelForm):
     class Meta:
         model = universitario
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user','lider']
         
         
 class grupoForm(ModelForm):
