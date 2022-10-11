@@ -110,15 +110,15 @@ def migrupo(request, username):
     }
     return render(request,'migrupo.html',contexto)
 
-def editar_perfil(request, id):
+def editar_perfil(request):
     
-    perfil= get_object_or_404(universitario, id=id)
+    perfil= get_object_or_404(User, pk=request.user.pk)
     
     data= {
-        'form': UniversitarioForm(instance=perfil)
+        'form': UserCreationForm(instance=perfil)
     }
     if request.method == 'POST':
-        formulario= UniversitarioForm(data=request.POST, instance=perfil)   
+        formulario= UserCreationForm(data=request.POST, instance=perfil)   
         if formulario.is_valid():
             formulario.save()
             return redirect(to="coordinador.html")
