@@ -34,16 +34,17 @@
                     <ul class="navbar-nav navbar">
                         <li><a href="{% url 'cerrar' %}">Cerrar</a></li>
                     </ul>
-                    {% elif request.user.is_superuser %}
-                    <ul class="navbar-nav navbar">
-                        <li><a href="{% url 'coordinador' %}">coordinador</a></li>
-                    </ul>
                     {% else %}
                     <ul class="navbar-nav navbar">
                         <li><a href="{% url 'login' %}">login</a></li>
                     </ul>
                     <ul class="navbar-nav navbar">
                         <li><a href="{% url 'registro' %}">registro</a></li>
+                    </ul>
+                    {% endif %}
+                    {% if request.user.is_staff %}
+                    <ul class="navbar-nav navbar">
+                        <li><a href="{% url 'coordinador' %}">coordinador</a></li>
                     </ul>
                     {% endif %}
                 </div>
