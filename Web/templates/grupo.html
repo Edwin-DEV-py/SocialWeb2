@@ -15,6 +15,11 @@
           <h5 class="card-title"><a href="{% url 'migrupo' g.user %}">{{ g.titulo }}</a></h5>
           <p class="card-text">{{ g.Descripcion }}</p>
           <p class="card-text"><small class="text-muted">{{ g.user.first_name }}</small></p>
+          {% for u in uni %}
+          {% if u.tipo_usuario == 'universitario' %}
+          <button type="submit" class="btn btn-primary my-1">Unirme</button>
+          {% endif %}
+          {% endfor %}
         </div>
       </div>
     </div>

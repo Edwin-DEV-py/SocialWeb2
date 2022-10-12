@@ -14,9 +14,9 @@
       <th scope="col">Correo</th>
       <th scope="col">Semestre</th>
       <th scope="col">Promedio</th>
+      <th scope="col">Líder</th>
       <th scope="col">Editar</th>
       <th scope="col">Eliminar</th>
-      <th scope="col">Líder</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +29,8 @@
         <td>{{ u.user.username }}</td>
         <td>{{ u.semestre }}</td>
         <td>{{ u.promedio }}</td>
-        <td><a href="{% url 'editar' u.id %}">Editar</a> </td>
+        <td>{{ u.lider }}</td>
+        <td><a href="{% url 'editarU' u.id %}">Editar</a> </td>
         <td><a href="{% url 'eliminar_usuario' %}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
         <td> <button type="submit" class="btn btn-primary my-1">Aceptar</button> </td>
       </tr>

@@ -14,7 +14,8 @@ from Web2.models import universitario
 
 def index(request):
     user = grupo.objects.filter(user_id=request.user.id)
-    return render(request,'index.html',{'mg':user})
+    datos = universitario.objects.all()
+    return render(request,'index.html',{'mg':user,'uni':datos})
 
 def login_usuario(request):
     if request.method == 'POST':
@@ -86,10 +87,22 @@ def perfil(request):
             return redirect('index.html')
     else:
         form2 = grupoForm()
+        
+    user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':
+        form3 = propuestaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form2 = form.save(commit = False)
+            form2.user = user
+            form2.save()
+            return redirect('index.html')
+    else:
+        form3 = propuestaForm()
+        
     uni = universitario.objects.filter(user_id = request.user.id)
     usuario = User.objects.filter()
     ziplista = zip(uni,usuario)
-    return render(request,'perfil.html',{'form':form,'form2':form2,'zipl':ziplista,'un':uni})
+    return render(request,'perfil.html',{'form':form,'form2':form2,'form3':form3,'zipl':ziplista,'un':uni})
 
 #uni = universitario.objects.all()
 #user = request.user
@@ -101,8 +114,10 @@ def salir(request):
     
 def ver_grupos(request):
     grupos = grupo.objects.all()
+    uni = universitario.objects.filter(user_id = request.user.id)
     contexto = {
-        'grupos':grupos
+        'grupos':grupos,
+        'uni':uni
     }
     return render(request,'grupo.html',contexto)
 
@@ -128,7 +143,7 @@ def editar_perfil(request,id):
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'editaruni.html', contesto)
+    return render(request, 'editarperfil.html', contesto)
 
 def eliminar_usuario(request,id):
     usuario = User.objects.get(id = id)
@@ -136,15 +151,16 @@ def eliminar_usuario(request,id):
     return redirect('index') 
 
 
-def editaruni(request):
-    user = get_object_or_404(User,pk=request.user.pk)
-    if request.method == 'POST':
-        form = UniversitarioForm(request.POST, request.FILES)
-        if form.is_valid():
-            form2 = form.save(commit = False)
-            form2.user = user
-            form2.save()
-            return redirect('index.html')
+def editaruni(request,id):
+    
+    perfil= universitario.objects.get(id=id)
+    if request.method == 'GET':
+        form = UniversitarioForm2(instance=perfil)
+        contesto = {'form':form,'perfil':perfil}
     else:
-        form = UniversitarioForm()
-    return render(request, 'editaruni.html', {'form':form})
+        form = UniversitarioForm2(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'editaruni.html', contesto)
+
