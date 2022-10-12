@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponse
 from django.urls import reverse_lazy
 from .forms import *
 from django.contrib import messages
@@ -62,11 +62,16 @@ def coordinador(request):
 @login_required
 def form_propuestas(request):
     #3user = get_object_or_404(User,pk=request.user.pk)
+    form = propuestaForm()
     if request.method == 'POST':
-        form = propuestaForm(request.POST, request.FILES)
+        
         if form.is_valid():
             #form2 = form.save(commit = False)
             #form2.user = user
+            form = propuestaForm(request.POST, request.FILES)
+            file2 = request.FILES["file"]
+            document = propuesta.objects.create(file=file2)
+            document.save()
             form.save()
             return redirect('index')
     else:
