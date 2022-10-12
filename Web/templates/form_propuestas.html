@@ -2,31 +2,11 @@
 {% load widget_tweaks%}
 {% block index %}
 <center>
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="container py-5 h-100">
-            <div class="form-group">
-                {% render_field form.titulo class="form-control" id="Propuesta_titulo" type="text" placeholder="Titulo" %}
-            </div>
-            <br>
-            <div class="form-group">
-                {% render_field form.Descripcion class="form-control" id="Propuesta_titulo" rows="3" type="text" placeholder="Descripcion Propuesta" %}
-                <!--label for="exampleFormControlTextarea1">Descripcion Propuesta</label-->
-            </div>
-            <br>
-            <div class="form-group">
-                {% render_field form.link class="form-control" id="Propuesta_titulo" type="text" placeholder="Video" %}
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Ingrese las diapositivas</label>
-            </div> 
-            <div>
-                {% render_field form.diapostivas type="file" class="form-control-file" id="exampleFormControlFile" name="file" %}
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Crear propuesta</button>
-        </div>
+        {{ form.as_p }}
+        <br>
+        <button type="submit" class="btn btn-primary">Crear propuesta</button>
     </form>
 </center>
 {% endblock %}

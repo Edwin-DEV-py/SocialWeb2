@@ -61,18 +61,13 @@ def coordinador(request):
 
 @login_required
 def form_propuestas(request):
-    #3user = get_object_or_404(User,pk=request.user.pk)
-    form = propuestaForm()
-    if request.method == 'POST':
-        
+    user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':  
+        form = propuestaForm(request.POST, request.FILES)     
         if form.is_valid():
-            #form2 = form.save(commit = False)
-            #form2.user = user
-            form = propuestaForm(request.POST, request.FILES)
-            file2 = request.FILES["file"]
-            document = propuesta.objects.create(file=file2)
-            document.save()
-            form.save()
+            form2 = form.save(commit = False)
+            form2.user = user
+            form2.save()
             return redirect('index')
     else:
         form = propuestaForm()
