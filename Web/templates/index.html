@@ -29,13 +29,14 @@
                         <li><a href="{% url 'feed' %}">feed</a></li>
                     </ul>
                     <ul class="navbar-nav navbar">
-                        <li><a href="{% url 'coordinador' %}">coordinador</a></li>
-                    </ul>
-                    <ul class="navbar-nav navbar">
                         <li><a href="{% url 'ver_grupos' %}">grupo</a></li>
                     </ul>
                     <ul class="navbar-nav navbar">
                         <li><a href="{% url 'cerrar' %}">Cerrar</a></li>
+                    </ul>
+                    {% elif request.user.is_superuser %}
+                    <ul class="navbar-nav navbar">
+                        <li><a href="{% url 'coordinador' %}">coordinador</a></li>
                     </ul>
                     {% else %}
                     <ul class="navbar-nav navbar">

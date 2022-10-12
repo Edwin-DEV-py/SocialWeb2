@@ -55,7 +55,7 @@ class propuesta(models.Model):
     titulo = models.CharField(max_length = 50, null=False)
     Descripcion = models.CharField(max_length = 300)
     link = models.CharField(max_length = 200)
-    diapostivas = models.FileField()
+    diapostivas = models.FileField(upload_to="diapositivas/")
     
     def __str__(self):
 	    return (self.Descripcion,self.titulo,self.link,self.diapostivas)

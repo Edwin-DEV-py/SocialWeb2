@@ -58,9 +58,19 @@ def coordinador(request):
         'uni':datos
     }
     return render(request,'coordinador.html',contexto)
- 
+
+@login_required
 def form_propuestas(request):
-    form = propuestaForm()
+    #3user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':
+        form = propuestaForm(request.POST, request.FILES)
+        if form.is_valid():
+            #form2 = form.save(commit = False)
+            #form2.user = user
+            form.save()
+            return redirect('index')
+    else:
+        form = propuestaForm()
     return render(request,'form_propuestas.html',{'form':form})
 
 
@@ -88,21 +98,10 @@ def perfil(request):
     else:
         form2 = grupoForm()
         
-    user = get_object_or_404(User,pk=request.user.pk)
-    if request.method == 'POST':
-        form3 = propuestaForm(request.POST, request.FILES)
-        if form.is_valid():
-            form2 = form.save(commit = False)
-            form2.user = user
-            form2.save()
-            return redirect('index.html')
-    else:
-        form3 = propuestaForm()
-        
     uni = universitario.objects.filter(user_id = request.user.id)
     usuario = User.objects.filter()
     ziplista = zip(uni,usuario)
-    return render(request,'perfil.html',{'form':form,'form2':form2,'form3':form3,'zipl':ziplista,'un':uni})
+    return render(request,'perfil.html',{'form':form,'form2':form2,'zipl':ziplista,'un':uni})
 
 #uni = universitario.objects.all()
 #user = request.user
