@@ -1,5 +1,6 @@
 from distutils.command.upload import upload
 from email.policy import default
+from operator import index
 from django.db import models
 import random,string
 from django.utils.text import slugify
@@ -45,8 +46,19 @@ class grupo(models.Model):
     titulo = models.CharField(max_length = 50, null=False)
     Descripcion = models.CharField(max_length = 150)
     
+    # def following(self):
+    #    user_ids = Relacion.objects.filter(from_user = self.user)\
+    #                        .values_list('to_user_id',flat=True)
+    #    return User.objects.filter(id__in=user_ids)
+    # 
+    # def followers(self):
+    #    user_ids = Relacion.objects.filter(to_user = self.user)\
+    #                        .values_list('from_user_id',flat=True)
+    #    return User.objects.filter(id__in=user_ids)
+    #liked
     def __str__(self):
     	return f'Perfil de {self.user.username}'
+
     
 
 class propuesta(models.Model):
@@ -59,3 +71,17 @@ class propuesta(models.Model):
     
     def __str__(self):
 	    return (self.Descripcion,self.titulo,self.link,self.diapostivas)
+ 
+ 
+ 
+#class Relacion(models.Model):
+#    from_user = models.ForeignKey(User,related_name='relacion',on_delete=models.CASCADE)
+#    to_user = models.ForeignKey(User,related_name='relacion_a',on_delete=models.CASCADE)
+#    
+#    def __str__(self):
+#        return f'{self.from_user} to {self.to_user}'
+#    
+#    class Meta:
+#        indexes = [
+#            models.Index(fields=['from_user','to_user'])
+#        ]

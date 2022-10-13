@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect, HttpResponse
 from django.urls import reverse_lazy
+from django.views import View
 from .forms import *
 from django.contrib import messages
 from django.http import HttpResponse
@@ -11,6 +12,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from Web2.models import universitario
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
     user = grupo.objects.filter(user_id=request.user.id)
@@ -163,3 +165,22 @@ def editaruni(request,id):
             return redirect('index')
     return render(request, 'editaruni.html', contesto)
 
+
+# def follow(request,username):
+#     current_user = request.user
+#     to_user = User.objects.get(username=username)
+#     to_user_id = to_user
+#     rel = Relacion(from_user=current_user, to_user=to_user_id)
+#     rel.save()
+#     messages.success(request,f'Entraste al grupo {username}')
+#     return redirect('index')
+# 
+# def unfollow(request,username):
+#     current_user = request.user
+#     to_user = User.objects.get(username=username)
+#     to_user_id = to_user
+#     rel = Relacion.objects.filter(from_user = current_user.id, to_user=to_user_id).get()
+#     rel.delete()
+#     messages.success(request,f'Ya no estas en el grupo {username}')
+#     return redirect('index')
+     

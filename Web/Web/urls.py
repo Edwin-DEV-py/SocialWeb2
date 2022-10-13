@@ -37,6 +37,8 @@ urlpatterns = [
     path('cerrar.html',salir,name="cerrar"),
     path('eliminar_usuario',eliminar_usuario,name="eliminar_usuario"),
     path('editaruni/<int:id>/',editaruni,name="editarU"),
+    #path('follow/<str:username>/',follow,name="follow"),
+    #path('unfollow/<str:username>/',unfollow,name="unfollow"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
