@@ -45,17 +45,8 @@ class grupo(models.Model):
     id = models.AutoField(primary_key = True)
     titulo = models.CharField(max_length = 50, null=False)
     Descripcion = models.CharField(max_length = 150)
+    seguir = models.ManyToManyField(User,blank=True, related_name='seguir')
     
-    # def following(self):
-    #    user_ids = Relacion.objects.filter(from_user = self.user)\
-    #                        .values_list('to_user_id',flat=True)
-    #    return User.objects.filter(id__in=user_ids)
-    # 
-    # def followers(self):
-    #    user_ids = Relacion.objects.filter(to_user = self.user)\
-    #                        .values_list('from_user_id',flat=True)
-    #    return User.objects.filter(id__in=user_ids)
-    #liked
     def __str__(self):
     	return f'Perfil de {self.user.username}'
 
@@ -74,14 +65,3 @@ class propuesta(models.Model):
  
  
  
-#class Relacion(models.Model):
-#    from_user = models.ForeignKey(User,related_name='relacion',on_delete=models.CASCADE)
-#    to_user = models.ForeignKey(User,related_name='relacion_a',on_delete=models.CASCADE)
-#    
-#    def __str__(self):
-#        return f'{self.from_user} to {self.to_user}'
-#    
-#    class Meta:
-#        indexes = [
-#            models.Index(fields=['from_user','to_user'])
-#        ]

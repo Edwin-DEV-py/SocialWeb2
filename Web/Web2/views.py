@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from .forms import *
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.hashers import make_password
@@ -115,7 +115,7 @@ def salir(request):
     
 def ver_grupos(request):
     grupos = grupo.objects.all()
-    uni = universitario.objects.filter(user_id = request.user.id)
+    uni = request.user
     contexto = {
         'grupos':grupos,
         'uni':uni
@@ -166,21 +166,18 @@ def editaruni(request,id):
     return render(request, 'editaruni.html', contesto)
 
 
-# def follow(request,username):
-#     current_user = request.user
-#     to_user = User.objects.get(username=username)
-#     to_user_id = to_user
-#     rel = Relacion(from_user=current_user, to_user=to_user_id)
-#     rel.save()
-#     messages.success(request,f'Entraste al grupo {username}')
-#     return redirect('index')
-# 
-# def unfollow(request,username):
-#     current_user = request.user
-#     to_user = User.objects.get(username=username)
-#     to_user_id = to_user
-#     rel = Relacion.objects.filter(from_user = current_user.id, to_user=to_user_id).get()
-#     rel.delete()
-#     messages.success(request,f'Ya no estas en el grupo {username}')
-#     return redirect('index')
+def seguir(request,pk):
+    post = grupo.objects.get(pk=pk)
+    seguir = False
+    for seguir in post.seguir.filter(id=request.user.id):
+        if seguir == request.user:
+            seguir = True
+            break
+    if not seguir:
+        post.seguir.add(request.user)
+    if seguir:
+        post.seguir.remove(request.user)
+        
+    next = request.POST.get('next','/')
+    return HttpResponseRedirect(next)
      

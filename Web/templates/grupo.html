@@ -15,17 +15,13 @@
           <h5 class="card-title"><a href="{% url 'migrupo' g.user %}">{{ g.titulo }}</a></h5>
           <p class="card-text">{{ g.Descripcion }}</p>
           <p class="card-text"><small class="text-muted">{{ g.user.first_name }}</small></p>
-          {% for u in uni %}
-          {% if u.tipo_usuario == 'universitario' %}
-          {% if user.username != request.user.username %}
-          {% if user not in request.user.ver_grupos.following %}
-          <button type="submit" class="btn btn-primary my-1"><a href="{% url 'follow' user %}">Unirme</a></button>
-          {% else %}
-          <button type="submit" class="btn btn-primary my-1"><a href="{% url 'unfollow' user %}">Dejar</a></button>
+          <form action="{% url 'seguir' g.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" id="seguir"><i class="fa-regular fa-thumbs-up"></i><span>{{ g.seguir.all.count }}</span></button>
+          </form>
+          {% if g.seguir.count == "1" %}
+            <h2>Hola</h2>
           {% endif %}
-          {% endif %}
-          {% endif %}
-          {% endfor %}
         </div>
       </div>
     </div>
