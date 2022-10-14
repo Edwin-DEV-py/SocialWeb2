@@ -36,7 +36,13 @@ def login_usuario(request):
     return render(request,'login.html',{"form":form})
 
 def feed(request):
-    return render(request,'feed.html')
+    datos = propuesta.objects.all()
+    user = request.user
+    contexto = {
+        'user': user,
+        'pro':datos
+    }
+    return render(request,'feed.html',contexto)
 
 def registro_usuario(request):
     if request.method == 'POST':
