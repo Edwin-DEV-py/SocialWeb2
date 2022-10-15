@@ -187,6 +187,20 @@ def seguir(request,pk):
     next = request.POST.get('next','/')
     return HttpResponseRedirect(next)
 
+def comentarioview(request,pk):
+    post = propuesta.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = comentarioform(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.post = post
+            comentario.save()
+            return redirect('index',pk=post.pk)
+    else:
+        form = comentarioform()
+        
+    return render(request,'comentario.html',{'form':form})
+
 def form_contacto(request):
     form = contacto_form()
     return render(request,'form_contacto.html',{'form':form})

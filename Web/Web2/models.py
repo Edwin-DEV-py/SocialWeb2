@@ -64,6 +64,15 @@ class propuesta(models.Model):
     def __str__(self):
 	    return (self.Descripcion,self.titulo,self.link,self.diapostivas)
  
+ 
+class comentario(models.Model):
+    post = models.ForeignKey(propuesta,on_delete=models.CASCADE,related_name='comentario')
+    usuario = models.ForeignKey(User,on_delete=models.CASCADE,related_name='usuario')
+    texto = models.TextField()
+    
+    def __str__(self):
+        return self.texto
+ 
 class contacto(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='contacto')
     id = models.AutoField(primary_key = True)
