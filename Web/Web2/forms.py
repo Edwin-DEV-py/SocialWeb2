@@ -41,3 +41,9 @@ class propuestaForm(ModelForm):
     widgets ={
             'myfield':forms.TextInput(attrs={'class':'form-control'})
         }
+
+class contacto_form(ModelForm):
+    class Meta:
+        model=contacto
+        fields = '__all__'
+        exclude = ['user']

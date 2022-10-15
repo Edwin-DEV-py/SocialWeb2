@@ -37,7 +37,8 @@ urlpatterns = [
     path('cerrar.html',salir,name="cerrar"),
     path('eliminar_usuario',eliminar_usuario,name="eliminar_usuario"),
     path('editaruni/<int:id>/',editaruni,name="editarU"),
-    path('grupo.html/<int:pk>/seguir',seguir,name="seguir")
+    path('grupo.html/<int:pk>/seguir',seguir,name="seguir"),
+    path('form_contacto/', form_contacto,name="form_contacto"),
     #path('follow/<str:username>/',follow,name="follow"),
     #path('unfollow/<str:username>/',unfollow,name="unfollow"),
 ]

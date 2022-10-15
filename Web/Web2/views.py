@@ -186,4 +186,7 @@ def seguir(request,pk):
         
     next = request.POST.get('next','/')
     return HttpResponseRedirect(next)
-     
+
+def form_contacto(request):
+    form = contacto_form()
+    return render(request,'form_contacto.html',{'form':form})
