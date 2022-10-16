@@ -61,17 +61,19 @@ class propuesta(models.Model):
     link = models.CharField(max_length = 200)
     diapostivas = models.FileField(upload_to="diapositivas/")
     
+    
     def __str__(self):
-	    return (self.Descripcion,self.titulo,self.link,self.diapostivas)
+	    return f'{self.Descripcion}{self.titulo}{self.link}{self.diapostivas}'
  
  
-class comentario(models.Model):
+class comentarios(models.Model):
     post = models.ForeignKey(propuesta,on_delete=models.CASCADE,related_name='comentario')
     usuario = models.ForeignKey(User,on_delete=models.CASCADE,related_name='usuario')
     texto = models.TextField()
+    active = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.texto
+        return f'comentario de {self.usuario} {self.texto}'
  
 class contacto(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='contacto')

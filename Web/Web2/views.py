@@ -36,12 +36,22 @@ def login_usuario(request):
     return render(request,'login.html',{"form":form})
 
 def feed(request):
+    coment = comentarios.objects.all()
     datos = propuesta.objects.all()
     user = request.user
     contexto = {
         'user': user,
-        'pro':datos
+        'pro':datos,
+        'coment':coment
     }
+    form = comentarioform(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form2 = form.save(commit=False)
+            form2.datos = datos
+            form2.save()
+        else:
+            form = comentarioform()
     return render(request,'feed.html',contexto)
 
 def registro_usuario(request):

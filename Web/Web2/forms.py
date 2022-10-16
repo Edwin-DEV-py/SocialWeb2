@@ -44,7 +44,7 @@ class propuestaForm(ModelForm):
     
 class comentarioform(ModelForm):
     class Meta:
-        model = comentario
+        model = comentarios
         fields = '__all__'
         exclude = ['usuario','post']
 

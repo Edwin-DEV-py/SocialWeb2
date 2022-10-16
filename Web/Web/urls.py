@@ -39,6 +39,7 @@ urlpatterns = [
     path('editaruni/<int:id>/',editaruni,name="editarU"),
     path('grupo.html/<int:pk>/seguir',seguir,name="seguir"),
     path('form_contacto/', form_contacto,name="form_contacto"),
+    path('comentario/', comentarioview,name="comentario"),
     #path('feed/\\(\\?P(?P<pk>[^/]+)\\[0\\-9\\]\\+\\)/comentario/\\Z',feed,name="comentario"),
     #path('follow/<str:username>/',follow,name="follow"),
     #path('unfollow/<str:username>/',unfollow,name="unfollow"),
