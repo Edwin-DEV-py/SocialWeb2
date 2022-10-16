@@ -77,12 +77,49 @@
             </div>
           </div>
         </div>
+        <hr>
         <h2>Comentarios</h2>
-        {% for c in coment %}
-        By:{{ c.usuario.first_name }}
-        {{ c.texto }}
-        {% endfor %}
+        <hr>
+        <!-- Inicio espacio para comentar -->
+        <div class="container bootdey">
+        <div class="col-md-12 bootstrap snippets">
+        <div class="panel">
+          <div class="panel-body">
+            <textarea class="form-control" rows="2" placeholder="Que opinas?"></textarea>
+            <div class="mar-top clearfix">
+              <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> comentar</button>
+            </div>
+          </div>
+        </div>
+        <!-- Fin espacio para comentar -->
+        <div class="panel">
+            <div class="panel-body">
+            <!-- Inicio comentario -->
+            <div class="media-block">
+              <div class="media-body">
+                <hr>
+                <div class="mar-btm">
+                  {% for c in coment %}
+                  By:{{ c.usuario.first_name }}
+                  {{ c.texto }}
+                  {% endfor %}
+                </div>
+                <div class="pad-ver">
+                  <div class="btn-group">
+                    <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+                    <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+            <!-- Fin comentario -->
+          </div>
+        </div>
+        </div>
+        </div>
       </div>
+      
       {% endfor %}
     </div>
   </div>
