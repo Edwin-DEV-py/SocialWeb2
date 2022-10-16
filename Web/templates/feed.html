@@ -60,12 +60,22 @@
           <video src="{{ p.link }}">{{ p.link }}</video>
           <p>{{ p.diapostivas }}</p>
           <!--Desde aqui-->
-          <h2><a href="{% url 'comentario' %}">Comentar</a></h2>
-          <h2>Calificacion secreta y solo 1 vez</h2>
-          {% if p.user.id == request.user.id%}
-          {% else %}
-          <h2><a href="{% url 'form_contacto' %}">form de contacto</a></h2>
-          {% endif %}
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <h2 class="btn btn-link"><a href="{% url 'comentario' %}">Comentar</a></h2>
+              </div>
+              <div class="col-sm">
+                <h2 class="btn btn-link">Calificacion secreta y solo 1 vez</h2>
+              </div>
+              <div class="col-sm">
+                {% if p.user.id == request.user.id%}
+                {% else %}
+                <h2 class="btn btn-link"><a href="{% url 'form_contacto' %}">form de contacto</a></h2>
+                {% endif %}
+              </div>
+            </div>
+          </div>
         </div>
         <h2>Comentarios</h2>
         {% for c in coment %}
