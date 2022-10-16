@@ -59,6 +59,7 @@
           <p>{{ p.link }}</p>
           <video src="{{ p.link }}">{{ p.link }}</video>
           <p>{{ p.diapostivas }}</p>
+          <!--Desde aqui-->
           <h2><a href="{% url 'comentario' %}">Comentar</a></h2>
           <h2>Calificacion secreta y solo 1 vez</h2>
           {% if p.user.id == request.user.id%}
