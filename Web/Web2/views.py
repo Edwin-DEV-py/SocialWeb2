@@ -70,10 +70,12 @@ def registro_usuario(request):
 
 def coordinador(request):
     datos = universitario.objects.all()
+    datos2 = lider.objects.all()
     user = request.user
     contexto = {
         'user': user,
-        'uni':datos
+        'uni':datos,
+        'lider':datos2
     }
     return render(request,'coordinador.html',contexto)
 
@@ -119,7 +121,17 @@ def perfil(request):
     uni = universitario.objects.filter(user_id = request.user.id)
     usuario = User.objects.filter()
     ziplista = zip(uni,usuario)
-    return render(request,'perfil.html',{'form':form,'form2':form2,'zipl':ziplista,'un':uni})
+    user = get_object_or_404(User,pk=request.user.pk)
+    if request.method == 'POST':
+        form3 = liderform(request.POST)
+        if form3.is_valid():
+            form4 = form3.save(commit=False)
+            form4.user = user
+            form4.save()
+            return redirect('index.html')
+    else:
+        form3 = liderform()
+    return render(request,'perfil.html',{'form':form,'form2':form2,'zipl':ziplista,'un':uni,'form3':form3})
 
 #uni = universitario.objects.all()
 #user = request.user

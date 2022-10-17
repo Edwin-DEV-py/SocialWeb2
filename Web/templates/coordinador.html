@@ -4,6 +4,7 @@
 <div class="text-center">
     <h1 class="display-4">Coordinador pagina</h1>
 </div>
+<h2>Tabla de usuarios</h2>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -32,7 +33,28 @@
         <td>{{ u.lider }}</td>
         <td><a href="{% url 'editarU' u.id %}">Editar</a> </td>
         <td><a href="{% url 'eliminar_usuario' %}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
-        <td> <button type="submit" class="btn btn-primary my-1">Aceptar</button> </td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+<br>
+<h2>Tabla de solicitudes</h2>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Solicitud</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for l in lider %}
+      <tr>
+        <td>{{ l.user.first_name }}</td>
+        <td>{{ l.user.last_name }}</td>
+        <td>{{ l.solicitud }}</td>
+        <td><a href="{% url 'eliminar_usuario' %}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
       </tr>
       {% endfor %}
   </tbody>

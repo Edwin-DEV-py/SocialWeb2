@@ -30,7 +30,7 @@ class grupoForm(ModelForm):
     class Meta:
         model=grupo
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user','seguir']
 
 class propuestaForm(ModelForm):
     class Meta:
@@ -51,5 +51,11 @@ class comentarioform(ModelForm):
 class contacto_form(ModelForm):
     class Meta:
         model=contacto
+        fields = '__all__'
+        exclude = ['user']
+        
+class liderform(ModelForm):
+    class Meta:
+        model=lider
         fields = '__all__'
         exclude = ['user']

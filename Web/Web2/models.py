@@ -85,3 +85,9 @@ class contacto(models.Model):
     def __str__(self):
 	    return (self.nombre,self.correo,self.descripcion)
  
+class lider(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='lider')
+    solicitud = models.TextField()
+    
+    def __str__(self):
+        return self.solicitud

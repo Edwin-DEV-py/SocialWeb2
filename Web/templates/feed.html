@@ -4,10 +4,10 @@
 <section >
   <div class="row">
     <div class="col-lg-3">
-      <div style="height: 550px;">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height: 550px;">
+      <div style="height: 200px;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height: 200px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+              <svg class="bi me-2" width="30" height="32"><use xlink:href="#bootstrap"></use></svg>
               <span class="fs-4">Sidebar</span>
             </a>
             <hr>
@@ -22,24 +22,6 @@
                 <a href="{% url 'perfil' %}" class="nav-link link-dark">
                   <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg>
                   {{ user.first_name }} {{ user.last_name }}
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                  Orders
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                  Customers
                 </a>
               </li>
             </ul>
@@ -84,12 +66,6 @@
         <div class="container bootdey">
         <div class="col-md-12 bootstrap snippets">
         <div class="panel">
-          <div class="panel-body">
-            <textarea class="form-control" rows="2" placeholder="Que opinas?"></textarea>
-            <div class="mar-top clearfix">
-              <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> comentar</button>
-            </div>
-          </div>
         </div>
         <!-- Fin espacio para comentar -->
         <div class="panel">
@@ -119,7 +95,7 @@
         </div>
         </div>
       </div>
-      
+      <br>
       {% endfor %}
     </div>
   </div>

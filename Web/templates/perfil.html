@@ -92,7 +92,7 @@
     </div>
   </div>
          <button type="submit" class="btn btn-primary my-1">Guardar Cambios</button>
-         <button type="submit" class="btn btn-primary pull-right my-1">Solicitar líder</button>      
+
 </section>
 </div>
 <!-- Button trigger modal -->
@@ -130,6 +130,27 @@
 <button onclick="myFunction()" class="btn btn-primary">Si</button>
 </div>
 <br>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Solicitar Lider</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Solicitud</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          {% csrf_token %}
+          {{ form3.as_p }}
+          <input class="btn btn-primary btn-lg" type="submit" value="Enviar" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="mostrar">
   <div>
     <!-- Button trigger modal -->
@@ -158,8 +179,8 @@
     </div>
   </div>
 </div>
-
 </center>
+
 
 <script>
   function myFunction() {
