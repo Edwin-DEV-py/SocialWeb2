@@ -38,6 +38,7 @@ def login_usuario(request):
 def feed(request):
     coment = comentarios.objects.all()
     datos = propuesta.objects.all()
+    print(datos)
     user = request.user
     contexto = {
         'user': user,

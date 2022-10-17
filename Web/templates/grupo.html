@@ -12,7 +12,9 @@
       </div>
       <div class="col-md-6">
         <div class="card-body">
+          {% if g.grupo.user_id == g.grupo.seguir.user_id %}
           <h5 class="card-title"><a href="{% url 'migrupo' g.user %}">{{ g.titulo }}</a></h5>
+          {% endif %}
           <p class="card-text">{{ g.Descripcion }}</p>
           <p class="card-text"><small class="text-muted">{{ g.user.first_name }}</small></p>
           <form action="{% url 'seguir' g.pk %}" method="POST">

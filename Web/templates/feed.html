@@ -38,9 +38,9 @@
         <div class="card-body">
           <h5 class="card-title">{{ p.titulo }}</h5>
           <p class="card-text">{{ p.Descripcion }}</p>
+          <iframe src="{{ p.link }}" frameborder="0"></iframe>
           <p>{{ p.link }}</p>
-          <video src="{{ p.link }}">{{ p.link }}</video>
-          <p>{{ p.diapostivas }}</p>
+          <p><a href="{{ p.diapostivas.url }}">{{ p.diapostivas }}</a></p>
           <!--Desde aqui-->
           <div class="container">
             <div class="row">
