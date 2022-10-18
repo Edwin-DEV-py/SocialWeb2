@@ -122,14 +122,6 @@
   </div>
 </div>
 {% else %}
-<h2>No eres un lider aun</h2>
-{% endif %}
-{% endfor %}
-<div id="BotonSi">
-  <h2>Eres un estudiante?</h2>
-<button onclick="myFunction()" class="btn btn-primary">Si</button>
-</div>
-<br>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Solicitar Lider</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -151,6 +143,13 @@
     </div>
   </div>
 </div>
+{% endif %}
+{% endfor %}
+<div id="BotonSi">
+  <h2>Eres un estudiante?</h2>
+<button onclick="myFunction()" class="btn btn-primary">Si</button>
+</div>
+<br>
 <div id="mostrar">
   <div>
     <!-- Button trigger modal -->
