@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block index %}
+
+<div class="container">
+    <form action="" method="POST">
+        <h1>Valoración del proyecto</h1>
+        <div class="form-group">
+            <label for="">Titulo del proyecto</label>
+            <input type="text" class="form-control" name="nombre" id="title" required>
+        </div>
+        <div class="form-group">
+            <label for="">Puntaje del proyecto</label>
+            <input type="number" class="form-control" name="puntaje" required id="puntaje" placeholder="Ingrese un valor de 1 a 5" min="1" max="5">
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary btn-sm" name="btnSubmit" id="btnSubmit">Enviar puntaje</button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <table class="table table-hover" id="tablaproyecto">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Puntaje</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+<script src="js/interfaz.js"></script>
+<script src="js/logica.js"></script>
+
+{% endblock %}
