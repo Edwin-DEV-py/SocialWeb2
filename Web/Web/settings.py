@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Web2',
+    'embed_video',
     'widget_tweaks',
 ]
 

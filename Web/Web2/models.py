@@ -7,6 +7,7 @@ import random,string
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.utils import timezone
+from embed_video.fields import EmbedVideoField
 
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 
@@ -58,7 +59,7 @@ class propuesta(models.Model):
     id = models.AutoField(primary_key = True)
     titulo = models.CharField(max_length = 50, null=False)
     Descripcion = models.CharField(max_length = 300)
-    link = models.CharField(max_length = 200)
+    link = EmbedVideoField()
     diapostivas = models.FileField(upload_to="diapositivas/")
     
     
@@ -77,6 +78,7 @@ class comentarios(models.Model):
  
 class contacto(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='contacto')
+    post = models.ForeignKey(propuesta,on_delete=models.CASCADE,related_name='dirigido')
     id = models.AutoField(primary_key = True)
     nombre = models.CharField(max_length = 30)
     correo = models.CharField(max_length = 300)

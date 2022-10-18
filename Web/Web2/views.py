@@ -225,5 +225,11 @@ def comentarioview(request,pk):
     return render(request,'comentario.html',{'form':form})
 
 def form_contacto(request):
-    form = contacto_form()
+    if request.method == 'POST':
+        form = contacto_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = contacto_form()
     return render(request,'form_contacto.html',{'form':form})
