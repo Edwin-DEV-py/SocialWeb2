@@ -48,7 +48,7 @@
                 <h2 class="btn btn-link"><a href="{% url 'comentario' %}">Comentar</a></h2>
               </div>
               <div class="col-sm">
-                <h2 class="btn btn-link">Calificacion secreta y solo 1 vez</h2>
+                <h2 class="btn btn-link"><a href ="{% url 'calificar'%}">Calificacion secreta y solo 1 vez</a></h2>
               </div>
               <div class="col-sm">
                 {% if p.user.id == request.user.id%}
