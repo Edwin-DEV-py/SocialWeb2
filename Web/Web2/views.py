@@ -233,3 +233,6 @@ def form_contacto(request):
     else:
         form = contacto_form()
     return render(request,'form_contacto.html',{'form':form})
+
+def calificar(request):
+    return render(request,'calificar.html')
