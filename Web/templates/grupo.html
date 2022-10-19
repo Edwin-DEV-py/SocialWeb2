@@ -20,7 +20,7 @@
           <p class="card-text"><small class="text-muted">{{ g.user.first_name }}</small></p>
           <form action="{% url 'seguir' g.pk %}" method="POST">
             {% csrf_token %}
-            <button type="submit" id="seguir"><i class="fa-regular fa-thumbs-up"></i><span>{{ g.seguir.all.count }}</span></button>
+            <button type="submit" id="seguir"><i class="fa-solid fa-users"></i><span>{{ g.seguir.all.count }}</span></button>
           </form>
           {% if g.seguir.count == "1" %}
             <h2>Hola</h2>

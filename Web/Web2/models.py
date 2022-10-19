@@ -61,6 +61,7 @@ class propuesta(models.Model):
     Descripcion = models.CharField(max_length = 300)
     link = EmbedVideoField()
     diapostivas = models.FileField(upload_to="diapositivas/")
+    like = models.ManyToManyField(User,blank=True, related_name='like')
     
     
     def __str__(self):

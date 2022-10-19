@@ -38,6 +38,7 @@ urlpatterns = [
     path('eliminar_usuario',eliminar_usuario,name="eliminar_usuario"),
     path('editaruni/<int:id>/',editaruni,name="editarU"),
     path('grupo.html/<int:pk>/seguir',seguir,name="seguir"),
+    path('feed.html/<int:pk>/like',like,name="like"),
     path('form_contacto/', form_contacto,name="form_contacto"),
     path('comentario/', comentarioview,name="comentario"),
     path('calificar/', calificar,name="calificar"),

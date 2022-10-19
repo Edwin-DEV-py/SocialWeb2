@@ -210,6 +210,21 @@ def seguir(request,pk):
     next = request.POST.get('next','/')
     return HttpResponseRedirect(next)
 
+def like(request,pk):
+    post = propuesta.objects.get(pk=pk)
+    like = False
+    for like in post.like.filter(id=request.user.id):
+        if like == request.user:
+            like = True
+            break
+    if not like:
+        post.like.add(request.user)
+    if like:
+        post.like.remove(request.user)
+        
+    next = request.POST.get('next','/')
+    return HttpResponseRedirect(next)
+
 def comentarioview(request,pk):
     post = propuesta.objects.get(pk=pk)
     if request.method == 'POST':
