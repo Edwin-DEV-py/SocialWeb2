@@ -9,23 +9,57 @@
 
 </head>
 
-<section class="vh-100 gradient-custom">
+<section class="vh-90 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
-      <div class="col-12 col-lg-9 col-xl-7">
-        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-          <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registro de usuario</h3>
-            <form asp-action="Registro" asp-controller="Home" method="post">
-                {% csrf_token %}
-                {{form.as_p}}
-              <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+      <div class="card-body px-4 py-5 px-md-6">
+        <form method="post">
+          {% csrf_token %}
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Nombre:</label>
+                {% render_field form.first_name class="form-control" id="form3Example1" %}
               </div>
-
-            </form>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Apellido:</label>
+                {% render_field form.last_name class="form-control" id="form3Example2" %}
+              </div>
+            </div>
           </div>
-        </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Correo:</label>
+            {% render_field form.username class="form-control" id="form3Example3" %}
+          </div>
+
+          <!-- Password input -->
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Password</label>
+                {% render_field form.password1 class="form-control" id="form3Example2" %}
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example4">Password</label>
+                {% render_field form.password2 class="form-control" id="form3Example3" %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkbox -->
+          <div class="form-check d-flex justify-content-center mb-4">
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+              Registrarse
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
