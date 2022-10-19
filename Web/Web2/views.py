@@ -143,10 +143,12 @@ def salir(request):
     return redirect("index")
     
 def ver_grupos(request):
+    user = universitario.objects.all()
     grupos = grupo.objects.all()
     uni = request.user
+    ziplista = zip(user,grupos)
     contexto = {
-        'grupos':grupos,
+        'zip':ziplista,
         'uni':uni
     }
     return render(request,'grupo.html',contexto)
