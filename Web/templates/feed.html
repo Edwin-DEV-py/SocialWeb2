@@ -76,8 +76,10 @@
                 <hr>
                 <div class="mar-btm">
                   {% for c in coment %}
-                  By:{{ c.usuario.first_name }}
+                  By:{{ c.user.first_name }}
+                  <br>
                   {{ c.texto }}
+                  <br>
                   {% endfor %}
                 </div>
                 <div class="pad-ver">
@@ -96,6 +98,7 @@
         </div>
       </div>
     </div>
+    <br>
     {% endfor %}
     <br>
       <br>
