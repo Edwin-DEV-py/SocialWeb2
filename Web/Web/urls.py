@@ -42,6 +42,7 @@ urlpatterns = [
     path('form_contacto/', form_contacto,name="form_contacto"),
     path('comentario/', comentarioview,name="comentario"),
     path('calificar/', calificar,name="calificar"),
+    path('eliminarlider/<int:id>/',eliminarlider,name="eliminar_lider")
     #path('feed/\\(\\?P(?P<pk>[^/]+)\\[0\\-9\\]\\+\\)/comentario/\\Z',feed,name="comentario"),
     #path('follow/<str:username>/',follow,name="follow"),
     #path('unfollow/<str:username>/',unfollow,name="unfollow"),

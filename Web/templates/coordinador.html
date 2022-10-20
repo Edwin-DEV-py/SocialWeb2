@@ -54,7 +54,7 @@
         <td>{{ l.user.first_name }}</td>
         <td>{{ l.user.last_name }}</td>
         <td>{{ l.solicitud }}</td>
-        <td><a href="{% url 'eliminar_usuario' %}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
+        <td><a href="{% url 'eliminar_lider' l.id %}"> <button type="submit" class="btn btn-primary my-1">Eliminar</button></a> </td>
       </tr>
       {% endfor %}
   </tbody>

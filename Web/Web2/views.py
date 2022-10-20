@@ -80,6 +80,11 @@ def coordinador(request):
     }
     return render(request,'coordinador.html',contexto)
 
+def eliminarlider(request,id):
+    eliminar = lider.objects.get(id=id)
+    eliminar.delete()
+    return redirect('coordinador.html')
+
 @login_required
 def form_propuestas(request):
     user = get_object_or_404(User,pk=request.user.pk)
