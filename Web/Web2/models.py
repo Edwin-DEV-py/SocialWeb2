@@ -70,12 +70,12 @@ class propuesta(models.Model):
  
 class comentarios(models.Model):
     post = models.ForeignKey(propuesta,on_delete=models.CASCADE,related_name='comentario')
-    usuario = models.ForeignKey(User,on_delete=models.CASCADE,related_name='usuario')
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='usuario')
     texto = models.TextField()
     active = models.BooleanField(default=True)
     
     def __str__(self):
-        return f'comentario de {self.usuario} {self.texto}'
+        return '%s - %s' % (self.post.titulo , self.usuario)
  
 class contacto(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='contacto')

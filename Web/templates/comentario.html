@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 {% block index %}
 {% load widget_tweaks%}
-
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary">Mandar</button>
+</form>
 {% endblock %}

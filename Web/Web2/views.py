@@ -227,19 +227,21 @@ def like(request,pk):
     next = request.POST.get('next','/')
     return HttpResponseRedirect(next)
 
-def comentarioview(request,pk):
-    post = propuesta.objects.get(pk=pk)
+
+def comentarioview(request):
+    user = get_object_or_404(User,pk=request.user.pk)
     if request.method == 'POST':
         form = comentarioform(request.POST)
         if form.is_valid():
             comentario = form.save(commit=False)
-            comentario.post = post
+            comentario.user = user
             comentario.save()
-            return redirect('index',pk=post.pk)
+            return redirect('index.html')
     else:
         form = comentarioform()
         
     return render(request,'comentario.html',{'form':form})
+
 
 def form_contacto(request):
     if request.method == 'POST':
