@@ -236,7 +236,7 @@ def comentarioview(request):
             comentario = form.save(commit=False)
             comentario.user = user
             comentario.save()
-            return redirect('index.html')
+            return redirect('index/')
     else:
         form = comentarioform()
         
