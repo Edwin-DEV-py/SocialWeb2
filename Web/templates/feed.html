@@ -47,7 +47,9 @@
                 <form action="{% url 'like' p.pk %}" method="POST">
                   {% csrf_token %}
                   <button type="submit" id="seguir"><i class="fa-regular fa-thumbs-up"></i><span>{{ p.like.all.count }}</span></button>
-                </form>              <div class="col-sm">
+                </form>
+              </div>          
+              <div class="col-sm">
                 <h2 class="btn btn-link"><a href="{% url 'comentario' %}">Comentar</a></h2>
               </div>
               <div class="col-sm">
@@ -66,7 +68,6 @@
         <div class="container bootdey">
         <div class="col-md-12 bootstrap snippets">
         <div class="panel">
-        </div>
         <!-- Fin espacio para comentar -->
         <div class="panel">
             <div class="panel-body">
@@ -94,8 +95,6 @@
     </div>
     <br>
     {% endfor %}
-    <br>
-      <br>
   </div>
 </section>
 {% endblock %}
