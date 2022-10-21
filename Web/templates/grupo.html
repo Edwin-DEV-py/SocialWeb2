@@ -20,7 +20,7 @@
             {% csrf_token %}
             <button type="submit" id="seguir"><i class="fa-solid fa-users"></i><span>{{ g.seguir.all.count }}</span></button>
           </form>
-          {% if g.user.seguir == request.user %}
+          {% if g.seguir == "1" %}
             <h2>Hola</h2>
           {% endif %}
         </div>
