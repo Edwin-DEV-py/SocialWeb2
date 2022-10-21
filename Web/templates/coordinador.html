@@ -5,7 +5,9 @@
     <h1 class="display-4">Coordinador pagina</h1>
 </div>
 <h2>Tabla de usuarios</h2>
-<table class="table">
+<br>
+<input align="right" type="text" id="filtro" onkeyup="buscar()" placeholder="Filtro">
+<table class="table" id="tabla">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Nombre</th>
@@ -62,4 +64,27 @@
   </tbody>
 </table>
 </center>
+<script>
+  function buscar(){
+      let input, filter, table, tr, td, i, txtValue;
+
+      input = document.getElementById("filtro");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tabla");
+      tr = table.getElementsByTagName("tr");
+
+      for(let i = 0; i < tr.length; i++){
+          td = tr[i].getElementsByTagName("td")[1,5];
+          if(td){
+              txtValue = td.textContent || td.innerText;
+              if(txtValue.toUpperCase().indexOf(filter)>-1){
+                  tr[i].style.display = "";
+              }
+              else{
+                  tr[i].style.display = "none";
+              }
+          }
+      }
+  }
+</script>
 {% endblock %}
