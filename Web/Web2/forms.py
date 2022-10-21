@@ -46,7 +46,7 @@ class comentarioform(ModelForm):
     class Meta:
         model = comentarios
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user','active']
 
 class contacto_form(ModelForm):
     class Meta:

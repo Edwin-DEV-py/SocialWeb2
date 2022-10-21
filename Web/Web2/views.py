@@ -69,6 +69,7 @@ def registro_usuario(request):
     contexto = {'form':form}
     return render(request,'registro.html',contexto)
 
+@login_required
 def coordinador(request):
     datos = universitario.objects.all()
     datos2 = lider.objects.all()
