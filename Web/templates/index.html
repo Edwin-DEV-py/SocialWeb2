@@ -52,6 +52,35 @@
             </div>
         </nav>
     </header>
+    {% if request.user.is_authenticated %}
+    <h1>Bienvenido @{{ user.first_name }} {{ user.last_name }}</h1>
+    {% else %}
+    <section>
+        <div class="col-lg-8">
+            {% for p in d %}
+            <div class="card">
+              <div class="card-header">
+                Post by: {{ p.user.first_name }} {{ p.user.last_name }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ p.titulo }}</h5>
+                <p class="card-text">{{ p.Descripcion }}</p>
+                {{ p.link }}
+                <p><a href="{{ p.diapostivas.url }}">{{ p.diapostivas }}</a></p>
+                <!--Desde aqui-->
+              </div>
+
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          {% endfor %}
+        </div>
+      </section>
+    </section>
+    {% endif %}
     {% block index %}
     <!-- Inicio Contenido de la pagina -->
     <div class="container">

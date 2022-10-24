@@ -17,7 +17,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def index(request):
     user = grupo.objects.filter(user_id=request.user.id)
     datos = universitario.objects.all()
-    return render(request,'index.html',{'mg':user,'uni':datos})
+    datos2 = propuesta.objects.all()
+    print(datos2)
+    return render(request,'index.html',{'mg':user,'uni':datos,'d':datos2})
 
 def login_usuario(request):
     if request.method == 'POST':
