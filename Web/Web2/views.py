@@ -97,7 +97,8 @@ def form_propuestas(request):
             form2 = form.save(commit = False)
             form2.user = user
             form2.save()
-            return redirect('index')
+            next = request.POST.get('next','/')
+            return HttpResponseRedirect(next)
     else:
         form = propuestaForm()
     return render(request,'form_propuestas.html',{'form':form})
@@ -244,7 +245,8 @@ def comentarioview(request):
             comentario = form.save(commit=False)
             comentario.user = user
             comentario.save()
-            return redirect('index/')
+            next = request.POST.get('next','/')
+            return HttpResponseRedirect(next)
     else:
         form = comentarioform()
         
