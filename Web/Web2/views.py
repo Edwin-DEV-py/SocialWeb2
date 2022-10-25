@@ -86,7 +86,8 @@ def coordinador(request):
 def eliminarlider(request,id):
     eliminar = lider.objects.get(id=id)
     eliminar.delete()
-    return redirect('coordinador.html')
+    next = request.POST.get('next','/')
+    return HttpResponseRedirect(next)
 
 @login_required
 def form_propuestas(request):
