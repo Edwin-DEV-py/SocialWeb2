@@ -53,7 +53,6 @@
         </nav>
     </header>
     {% if request.user.is_authenticated %}
-    <h1>Bienvenido @{{ user.first_name }} {{ user.last_name }}</h1>
     {% else %}
     <section>
         <div class="col-lg-8">
@@ -82,6 +81,9 @@
     </section>
     {% endif %}
     {% block index %}
+    {% if request.user.is_authenticated %}
+    <h1>Bienvenido @{{ user.first_name }} {{ user.last_name }}</h1>
+    {% endif %}
     <!-- Inicio Contenido de la pagina -->
     <div class="container">
         <main role="main" class="pb-3">
