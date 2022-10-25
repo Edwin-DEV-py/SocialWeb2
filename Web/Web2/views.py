@@ -114,7 +114,8 @@ def perfil(request):
             form2 = form.save(commit = False)
             form2.user = user
             form2.save()
-            return redirect('index.html')
+            next = request.POST.get('next','/')
+            return HttpResponseRedirect(next)
     else:
         form = UniversitarioForm()
         
@@ -125,7 +126,8 @@ def perfil(request):
             form3 = form2.save(commit=False)
             form3.user = user
             form3.save()
-            return redirect('index.html')
+            next = request.POST.get('next','/')
+            return HttpResponseRedirect(next)
     else:
         form2 = grupoForm()
         
@@ -139,7 +141,8 @@ def perfil(request):
             form4 = form3.save(commit=False)
             form4.user = user
             form4.save()
-            return redirect('index.html')
+            next = request.POST.get('next','/')
+            return HttpResponseRedirect(next)
     else:
         form3 = liderform()
     return render(request,'perfil.html',{'form':form,'form2':form2,'zipl':ziplista,'un':uni,'form3':form3})
